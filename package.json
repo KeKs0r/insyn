@@ -1,0 +1,21 @@
+{
+  "name": "insyn",
+  "version": "0.0.1",
+  "description": "Microservice Background Processing Framework",
+  "main": "index.js",
+  "scripts": {
+    "test": "ava \"**/*.spec.js*\" --verbose",
+    "test:watch": "npm run test -- --watch",
+    "ava:help": "ava -h"
+  },
+  "author": "Marc Höffl",
+  "license": "ISC",
+  "devDependencies": {
+    "ava": "avajs/ava#master",
+    "sinon": "^1.17.5",
+    "unexpected": "^10.17.2"
+  },
+  "dependencies": {
+    "immutable": "^3.8.1"
+  }
+}
