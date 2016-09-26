@@ -3,6 +3,9 @@
   "version": "0.0.1",
   "description": "Microservice Background Processing Framework",
   "main": "index.js",
+  "engines": {
+    "node": "v6.6.0"
+  },
   "scripts": {
     "test": "ava \"**/*.spec.js*\" --verbose",
     "test:watch": "npm run test -- --watch",
