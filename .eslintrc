@@ -1,0 +1,14 @@
+{
+    "extends": "airbnb",
+    "plugins": [
+        "react",
+        "jsx-a11y",
+        "import"
+    ],
+    "rules": {
+      "eol-last": 0,
+      "indent": ["error", 4],
+      "max-len": ["error", 120],
+      "arrow-parens": ["error", "as-needed"]
+    }
+}
