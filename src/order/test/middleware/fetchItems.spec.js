@@ -2,27 +2,19 @@ const test = require('ava');
 const expect = require('unexpected').clone();
 expect.use(require('unexpected-sinon'));
 const Sinon = require('sinon');
+const _ = require('lodash');
 
 const { createService, enhancer } = require('../../../../lib/src');
 const { applyMiddleware } = enhancer;
 
 const makeFetchItems = require('../../middleware/fetchItems');
 
-
 //  Fixtures
+const productData = require('../fixtures/products.json');
+
 const action = {
     type: 'mock.action',
-    items: [3, 4],
-};
-const productData = {
-    3: {
-        id: 3,
-        name: 'Super Product',
-    },
-    4: {
-        id: 4,
-        name: 'Different Product',
-    },
+    items: [2, 3],
 };
 const fetcher = id => productData[id];
 const handler = () => ({});
@@ -48,9 +40,11 @@ test('fetchCustomer - within service', () => {
     service.register(action.type, handlerSpy);
     service.handle(action);
 
+    const itemsData = _.pick(productData, [2, 3]);
+
+    expect(fetcherSpy, 'to have a call satisfying', [2]);
     expect(fetcherSpy, 'to have a call satisfying', [3]);
-    expect(fetcherSpy, 'to have a call satisfying', [4]);
     expect(handlerSpy, 'to have a call satisfying', {
-        args: [{ itemsData: productData }],
+        args: [{ itemsData }],
     });
 });

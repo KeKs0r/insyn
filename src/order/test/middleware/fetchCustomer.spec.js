@@ -14,10 +14,7 @@ const action = {
     type: 'mock.action',
     customer: 3,
 };
-const customerData = {
-    id: 3,
-    name: 'Jack Sparrow',
-};
+const customerData = require('../fixtures/customer.json');
 const fetcher = () => customerData;
 const handler = () => ({});
 
