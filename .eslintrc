@@ -8,19 +8,19 @@
   "rules": {
     "eol-last": 0,
     "indent": [
-      "error",
+      2,
       4
     ],
     "max-len": [
-      "error",
+      2,
       120
     ],
     "arrow-parens": [
-      "error",
+      2,
       "as-needed"
     ],
     "import/no-extraneous-dependencies": [
-      "error",
+      2,
       {
         "devDependencies": [
           "**/*.spec.js"
