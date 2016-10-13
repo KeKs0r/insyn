@@ -1,10 +1,18 @@
-const { createService, applyMiddleware } = require('../lib/src');
-//const { TargetMiddleware } = require('../lib/TargetMiddleware');
-const core = require('./core');
+const { createService, enhancer, middleware, compose } = require('../../lib/src');
 
-const OrderService = createService(
-    core,
-    // applyMiddleware(TargetMiddleware)
-);
+const createOrderService = bus => {
+    const { addSideDispatch, applyMiddleware } = enhancer;
+    const { uuid, target, sidedispatch } = middleware;
+    const OrderService = createService(
+        compose(
+            applyMiddleware(uuid, target, sidedispatch),
+            addSideDispatch(bus)
+        )
+    );
+    return OrderService;
+};
+
+module.exports = createOrderService;
+
 
 
