@@ -7,7 +7,7 @@
     "node": "v6.6.0"
   },
   "scripts": {
-    "lint": "eslint lib",
+    "lint": "eslint lib src test",
     "test": "ava \"**/*.spec.js*\" --verbose",
     "test:watch": "npm run test -- --watch",
     "ava:help": "ava -h"

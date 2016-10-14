@@ -4,7 +4,7 @@ expect.use(require('unexpected-sinon'));
 const Sinon = require('sinon');
 const _ = require('lodash');
 
-const { createService, enhancer } = require('../../../../lib/src');
+const { createService, enhancer } = require('../../../../lib/src'); // eslint-disable-line import/newline-after-import
 const { applyMiddleware } = enhancer;
 
 const makeFetchItems = require('../../middleware/fetchItems');

@@ -23,6 +23,3 @@ const createOrderService = bus => {
 };
 
 module.exports = createOrderService;
-
-
-

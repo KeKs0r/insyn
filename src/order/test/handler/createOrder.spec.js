@@ -12,7 +12,7 @@ const action = {
     items: [
         { id: 1, quantity: 2 },
         { id: 3, quantity: 1 },
-    ]
+    ],
 };
 
 const decoratedAction = Object.assign({}, action, {
@@ -41,5 +41,4 @@ test('Unit: Push Create Invoice', () => {
             type: CREATE_INVOICE,
         }),
     ]);
-
 });

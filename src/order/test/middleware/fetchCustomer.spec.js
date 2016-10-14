@@ -3,7 +3,7 @@ const expect = require('unexpected').clone();
 expect.use(require('unexpected-sinon'));
 const Sinon = require('sinon');
 
-const { createService, enhancer } = require('../../../../lib/src');
+const { createService, enhancer } = require('../../../../lib/src'); // eslint-disable-line import/newline-after-import
 const { applyMiddleware } = enhancer;
 
 const makeFetchCustomer = require('../../middleware/fetchCustomer');
@@ -14,7 +14,7 @@ const action = {
     type: 'mock.action',
     customer: 3,
 };
-const customerData = require('../fixtures/customer.json');
+const customerData = require('../fixtures/customer.json'); // eslint-disable-line import/newline-after-import
 const fetcher = () => customerData;
 const handler = () => ({});
 

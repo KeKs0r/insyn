@@ -1,9 +1,8 @@
 const test = require('ava');
 const expect = require('unexpected');
-
 const priceHandler = require('../../../handler/subhandler/prices');
-const { round } = priceHandler;
 
+const { round } = priceHandler;
 
 test('prices - round does business rounding', () => {
     expect(round(5.223), 'to equal', 5.22);
