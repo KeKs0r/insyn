@@ -1,6 +1,6 @@
 // const Joi = require('joi');
 const prices = require('./subhandler/prices');
-
+const createInvoice = require('./creators/invoiceFromOrder');
 
 
 const createOrderHandler = ({action, push}) => {
@@ -9,6 +9,7 @@ const createOrderHandler = ({action, push}) => {
         customer: action.customer,
         items: action.items,
     };
+    push(createInvoice(order));
     return order;
 };
 
