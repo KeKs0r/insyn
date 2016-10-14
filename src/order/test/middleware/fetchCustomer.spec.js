@@ -5,6 +5,7 @@ const Sinon = require('sinon');
 
 const { createService, enhancer } = require('../../../../lib/src'); // eslint-disable-line import/newline-after-import
 const { applyMiddleware } = enhancer;
+const wrapMockMiddleware = require('../../../../test/util/wrapMockMiddleware');
 
 const makeFetchCustomer = require('../../middleware/fetchCustomer');
 
@@ -20,10 +21,7 @@ const handler = () => ({});
 
 test('fetchCustomer - unit middleware', () => {
     const fetchCustomerMiddleware = makeFetchCustomer(fetcher);
-    const service = {};
-    const withService = fetchCustomerMiddleware(service);
-    const next = payload => ({ payload });
-    const withNext = withService(next);
+    const withNext = wrapMockMiddleware(fetchCustomerMiddleware);
     const result = withNext({ action });
     expect(result.payload, 'to have key', 'customerData');
 });
