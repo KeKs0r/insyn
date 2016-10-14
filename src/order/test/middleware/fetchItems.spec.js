@@ -14,7 +14,10 @@ const productData = require('../fixtures/products.json');
 
 const action = {
     type: 'mock.action',
-    items: [2, 3],
+    items: [
+        { id: 2, quantity: 2 },
+        { id: 3, quantity: 1 },
+    ],
 };
 const fetcher = id => productData[id];
 const handler = () => ({});
@@ -30,7 +33,7 @@ test('fetchItems - unit middleware', () => {
 });
 
 
-test('fetchCustomer - within service', () => {
+test('fetchItems - within service', () => {
     const handlerSpy = Sinon.spy(handler);
     const fetcherSpy = Sinon.spy(fetcher);
 
