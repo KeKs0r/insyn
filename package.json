@@ -28,7 +28,7 @@
   },
   "dependencies": {
     "joi": "9.1.1",
-    "lodash": "4.16.4",
+    "lodash": "4.16.5",
     "uuid": "^2.0.3"
   }
 }
