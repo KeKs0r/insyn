@@ -1,12 +1,12 @@
-// const Joi = require('joi');
+const { STATUS } = require('../../constants');
 
 const createInvoiceHandler = ({ action }) => {
     const invoice = {
         prices: action.prices,
         customer: action.customer,
         items: action.items,
+        status: STATUS.INVOICE.OPEN,
     };
-    // push(createInvoice(order));
     return invoice;
 };
 
