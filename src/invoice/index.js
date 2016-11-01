@@ -7,7 +7,7 @@ const {
 } = require('../../lib/src');
 
 // Middleware
-const makeMemoryFetcher = require('../common/memoryFetcher');
+const makeMemoryFetcher = require('../common/memoryStore');
 
 
 const targetMiddleware = makeTargetMiddleware(makeMemoryFetcher());

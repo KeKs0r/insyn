@@ -11,13 +11,13 @@ const customerData = require('./test/fixtures/customer.json');
 const productData = require('./test/fixtures/products.json');
 
 // Middleware
-const makeMemoryFetcher = require('../common/memoryFetcher');
+const makeMemoryStore = require('../../lib/src/util/memoryStore');
 const makeFetchCustomerMiddleware = require('./middleware/fetchCustomer');
 const makeFetchItemsMiddleware = require('./middleware/fetchItems');
 
-const customerFetcherMiddleware = makeFetchCustomerMiddleware(makeMemoryFetcher(customerData));
-const itemsFetcherMiddleware = makeFetchItemsMiddleware(makeMemoryFetcher(productData));
-const targetMiddleware = makeTargetMiddleware(makeMemoryFetcher());
+const customerFetcherMiddleware = makeFetchCustomerMiddleware(makeMemoryStore(customerData));
+const itemsFetcherMiddleware = makeFetchItemsMiddleware(makeMemoryStore(productData));
+const targetMiddleware = makeTargetMiddleware(makeMemoryStore());
 
 // Handler
 const { ACTIONS } = require('../constants');

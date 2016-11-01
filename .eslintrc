@@ -5,8 +5,7 @@
   "plugins": [
     "react",
     "jsx-a11y",
-    "import",
-    "ava"
+    "import"
   ],
   "rules": {
     "eol-last": 0,
