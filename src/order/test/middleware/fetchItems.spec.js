@@ -6,6 +6,7 @@ const _ = require('lodash');
 
 const { createService, enhancer } = require('../../../../lib/src'); // eslint-disable-line import/newline-after-import
 const { applyMiddleware } = enhancer;
+const wrapMockMiddleware = require('../../../../test/util/wrapMockMiddleware');
 
 const makeFetchItems = require('../../middleware/fetchItems');
 
@@ -24,10 +25,7 @@ const handler = () => ({});
 
 test('fetchItems - unit middleware', () => {
     const fetchItemsMiddleware = makeFetchItems(fetcher);
-    const service = {};
-    const withService = fetchItemsMiddleware(service);
-    const next = payload => ({ payload });
-    const withNext = withService(next);
+    const withNext = wrapMockMiddleware(fetchItemsMiddleware);
     const result = withNext({ action });
     expect(result.payload.action, 'to have key', 'itemsData');
 });
