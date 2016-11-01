@@ -13,8 +13,8 @@ const makeMemoryFetcher = require('../common/memoryFetcher');
 const targetMiddleware = makeTargetMiddleware(makeMemoryFetcher());
 
 // Handler
+const { ACTIONS } = require('../constants');
 const createInvoiceHandler = require('./handler/createInvoice');
-const { CREATE_INVOICE } = require('../constants');
 
 
 const createInvoiceService = bus => {
@@ -24,7 +24,7 @@ const createInvoiceService = bus => {
             addSideDispatch(bus)
         )
     );
-    InvoiceService.register(CREATE_INVOICE, createInvoiceHandler);
+    InvoiceService.register(ACTIONS.INVOICE.CREATE_INVOICE, createInvoiceHandler);
 
     return InvoiceService;
 };

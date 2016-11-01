@@ -1,6 +1,12 @@
-const actions = {
-    CREATE_ORDER: 'ORDER.CREATE_ORDER',
-    CREATE_INVOICE: 'INVOICE.CREATE_INVOICE',
+const constants = {
+    ACTIONS: {
+        ORDER: {
+            CREATE_ORDER: 'ORDER.CREATE_ORDER',
+        },
+        INVOICE: {
+            CREATE_INVOICE: 'INVOICE.CREATE_INVOICE',
+        },
+    },
     STATUS: {
         ORDER: {
             OPEN: 'STATUS_ORDER_OPEN',
@@ -11,4 +17,4 @@ const actions = {
     },
 };
 
-module.exports = actions;
+module.exports = constants;

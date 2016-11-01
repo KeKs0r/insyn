@@ -1,8 +1,8 @@
-const { CREATE_INVOICE } = require('../../../constants');
+const { ACTIONS } = require('../../../constants');
 
 const createInvoiceFromOrder = order => {
     const action = {
-        type: CREATE_INVOICE,
+        type: ACTIONS.INVOICE.CREATE_INVOICE,
         customer: order.customer,
         items: order.items,
         prices: order.prices,
