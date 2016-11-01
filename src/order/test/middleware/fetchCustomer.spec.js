@@ -5,7 +5,6 @@ const Sinon = require('sinon');
 
 const { createService, enhancer } = require('../../../../lib/src'); // eslint-disable-line import/newline-after-import
 const { applyMiddleware } = enhancer;
-
 const makeFetchCustomer = require('../../middleware/fetchCustomer');
 
 
