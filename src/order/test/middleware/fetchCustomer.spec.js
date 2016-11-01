@@ -15,11 +15,11 @@ const action = {
     customer: 3,
 };
 const customerData = require('../fixtures/customer.json'); // eslint-disable-line import/newline-after-import
-const fetcher = () => customerData;
+const store = { get: () => customerData };
 const handler = () => ({});
 
 test('fetchCustomer - unit middleware', () => {
-    const fetchCustomerMiddleware = makeFetchCustomer(fetcher);
+    const fetchCustomerMiddleware = makeFetchCustomer(store);
     const service = {};
     const withService = fetchCustomerMiddleware(service);
     const next = payload => ({ payload });
@@ -31,15 +31,13 @@ test('fetchCustomer - unit middleware', () => {
 
 test('fetchCustomer - within service', () => {
     const handlerSpy = Sinon.spy(handler);
-    const fetcherSpy = Sinon.spy(fetcher);
 
     const service = createService(
-        applyMiddleware(makeFetchCustomer(fetcherSpy))
+        applyMiddleware(makeFetchCustomer(store))
     );
     service.register(action.type, handlerSpy);
     service.handle(action);
 
-    expect(fetcherSpy, 'was called with', 3);
     expect(handlerSpy, 'was called with', expect.it('to satisfy', {
         action: expect.it('to satisfy', {
             customerData,

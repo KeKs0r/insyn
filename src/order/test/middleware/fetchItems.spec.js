@@ -19,11 +19,11 @@ const action = {
         { id: 3, quantity: 1 },
     ],
 };
-const fetcher = id => productData[id];
+const store = { get: id => productData[id] };
 const handler = () => ({});
 
 test('fetchItems - unit middleware', () => {
-    const fetchItemsMiddleware = makeFetchItems(fetcher);
+    const fetchItemsMiddleware = makeFetchItems(store);
     const service = {};
     const withService = fetchItemsMiddleware(service);
     const next = payload => ({ payload });
@@ -35,10 +35,10 @@ test('fetchItems - unit middleware', () => {
 
 test('fetchItems - within service', () => {
     const handlerSpy = Sinon.spy(handler);
-    const fetcherSpy = Sinon.spy(fetcher);
+    const fetcherSpy = Sinon.spy(store.get);
 
     const service = createService(
-        applyMiddleware(makeFetchItems(fetcherSpy))
+        applyMiddleware(makeFetchItems({ get: fetcherSpy }))
     );
     service.register(action.type, handlerSpy);
     service.handle(action);
