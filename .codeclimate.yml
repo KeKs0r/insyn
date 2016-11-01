@@ -9,6 +9,9 @@ engines:
     channel: "eslint-3"
     config:
         config: .eslintrc
+    checks:
+        import/no-unresolved:
+          enabled: false
   fixme:
     enabled: true
 ratings:
