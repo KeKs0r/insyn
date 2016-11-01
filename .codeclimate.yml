@@ -10,8 +10,8 @@ engines:
     config:
         config: .eslintrc
     checks:
-        import/no-unresolved:
-          enabled: false
+      import/no-unresolved:
+        enabled: false
   fixme:
     enabled: true
 ratings:
