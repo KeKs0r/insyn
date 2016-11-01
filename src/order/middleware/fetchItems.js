@@ -11,7 +11,7 @@ const makeFetchItems = store => service => next => payload => {
         const nextPayload = Object.assign({}, payload, { action: decoratedAction });
         return next(nextPayload);
     }
-    return next(action);
+    return next(payload);
 };
 
 module.exports = makeFetchItems;

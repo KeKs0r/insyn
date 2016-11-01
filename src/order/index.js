@@ -22,8 +22,7 @@ const targetMiddleware = makeTargetMiddleware(makeMemoryStore());
 // Handler
 const { ACTIONS } = require('../constants');
 const createOrderHandler = require('./handler/createOrder');
-
-
+const confirmOrderHandler = require('./handler/confirmOrder');
 
 const createOrderService = bus => {
     const OrderService = createService(
@@ -33,6 +32,7 @@ const createOrderService = bus => {
         )
     );
     OrderService.register(ACTIONS.ORDER.CREATE_ORDER, createOrderHandler);
+    OrderService.register(ACTIONS.ORDER.CONFIRM_ORDER, confirmOrderHandler);
 
     return OrderService;
 };
