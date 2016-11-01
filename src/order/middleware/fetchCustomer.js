@@ -4,7 +4,8 @@ const makeFetchCustomer = fetcher => service => next => payload => {
     const { customer } = action;
     if (customer) {
         const customerData = fetcher(customer);
-        const nextPayload = Object.assign({}, action, { customerData });
+        const decoratedAction = Object.assign({}, action, { customerData });
+        const nextPayload = Object.assign({}, payload, { action: decoratedAction });
         return next(nextPayload);
     }
     return next(action);
