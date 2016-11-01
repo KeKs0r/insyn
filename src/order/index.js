@@ -1,7 +1,10 @@
 // Framework
-const { createService, enhancer, middleware, compose } = require('../../lib/src');
-const { addSideDispatch, applyMiddleware } = enhancer;
-const { uuid, makeTargetMiddleware, sidedispatch } = middleware;
+const {
+    createService,
+    enhancer: { addSideDispatch, applyMiddleware },
+    middleware: { uuid, makeTargetMiddleware, sidedispatch },
+    compose,
+} = require('../../lib/src');
 
 // Fixtures
 const customerData = require('./test/fixtures/customer.json');
@@ -11,9 +14,9 @@ const productData = require('./test/fixtures/products.json');
 const makeMemoryFetcher = require('../common/memoryFetcher');
 const makeFetchCustomerMiddleware = require('./middleware/fetchCustomer');
 const makeFetchItemsMiddleware = require('./middleware/fetchItems');
+
 const customerFetcherMiddleware = makeFetchCustomerMiddleware(makeMemoryFetcher(customerData));
 const itemsFetcherMiddleware = makeFetchItemsMiddleware(makeMemoryFetcher(productData));
-
 const targetMiddleware = makeTargetMiddleware(makeMemoryFetcher());
 
 // Handler

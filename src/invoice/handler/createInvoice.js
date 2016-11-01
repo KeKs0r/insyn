@@ -1,6 +1,6 @@
 // const Joi = require('joi');
 
-const createInvoiceHandler = ({ action/*, push */ }) => {
+const createInvoiceHandler = ({ action }) => {
     const invoice = {
         prices: action.prices,
         customer: action.customer,
