@@ -25,7 +25,7 @@ test('fetchCustomer - unit middleware', () => {
     const next = payload => ({ payload });
     const withNext = withService(next);
     const result = withNext({ action });
-    expect(result.payload, 'to have key', 'customerData');
+    expect(result.payload.action, 'to have key', 'customerData');
 });
 
 
@@ -41,6 +41,8 @@ test('fetchCustomer - within service', () => {
 
     expect(fetcherSpy, 'was called with', 3);
     expect(handlerSpy, 'was called with', expect.it('to satisfy', {
-        customerData,
+        action: expect.it('to satisfy', {
+            customerData,
+        }),
     }));
 });

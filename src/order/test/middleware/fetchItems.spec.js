@@ -29,7 +29,7 @@ test('fetchItems - unit middleware', () => {
     const next = payload => ({ payload });
     const withNext = withService(next);
     const result = withNext({ action });
-    expect(result.payload, 'to have key', 'itemsData');
+    expect(result.payload.action, 'to have key', 'itemsData');
 });
 
 
@@ -48,6 +48,6 @@ test('fetchItems - within service', () => {
     expect(fetcherSpy, 'to have a call satisfying', [2]);
     expect(fetcherSpy, 'to have a call satisfying', [3]);
     expect(handlerSpy, 'to have a call satisfying', {
-        args: [{ itemsData }],
+        args: [{ action: expect.it('to satisfy', { itemsData }) }],
     });
 });
