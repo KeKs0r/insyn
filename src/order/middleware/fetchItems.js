@@ -7,7 +7,8 @@ const makeFetchItems = fetcher => service => next => payload => {
     if (items) {
         const keyed = keyBy(items, 'id');
         const itemsData = mapValues(keyed, item => fetcher(item.id));
-        const nextPayload = Object.assign({}, action, { itemsData });
+        const decoratedAction = Object.assign({}, action, { itemsData });
+        const nextPayload = Object.assign({}, payload, { action: decoratedAction });
         return next(nextPayload);
     }
     return next(action);
