@@ -20,8 +20,9 @@ const itemsFetcherMiddleware = makeFetchItemsMiddleware(makeMemoryFetcher(produc
 const targetMiddleware = makeTargetMiddleware(makeMemoryFetcher());
 
 // Handler
+const { ACTIONS } = require('../constants');
 const createOrderHandler = require('./handler/createOrder');
-const { CREATE_ORDER } = require('../constants');
+
 
 
 const createOrderService = bus => {
@@ -31,7 +32,7 @@ const createOrderService = bus => {
             addSideDispatch(bus)
         )
     );
-    OrderService.register(CREATE_ORDER, createOrderHandler);
+    OrderService.register(ACTIONS.ORDER.CREATE_ORDER, createOrderHandler);
 
     return OrderService;
 };

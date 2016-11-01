@@ -3,11 +3,11 @@ const expect = require('unexpected');
 expect.use(require('unexpected-sinon'));
 const Sinon = require('sinon');
 
-const { CREATE_ORDER, CREATE_INVOICE } = require('../../../constants');
+const { ACTIONS } = require('../../../constants');
 const createOrder = require('../../handler/createOrder');
 
 const action = {
-    type: CREATE_ORDER,
+    type: ACTIONS.ORDER.CREATE_ORDER,
     customer: 15,
     items: [
         { id: 1, quantity: 2 },
@@ -38,7 +38,7 @@ test('Unit: Push Create Invoice', () => {
     });
     expect(push, 'to have a call satisfying', [
         expect.it('to satisfy', {
-            type: CREATE_INVOICE,
+            type: ACTIONS.INVOICE.CREATE_INVOICE,
         }),
     ]);
 });
