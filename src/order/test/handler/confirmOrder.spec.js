@@ -4,12 +4,21 @@ const expect = require('unexpected');
 const { ACTIONS, STATUS } = require('../../../constants');
 const makeOrderService = require('../../index');
 const { noop } = require('lodash');
+const { memoryStore } = require('../../../../lib/src');
+
+const orderFixtures = {
+    1: {
+        id: 1,
+        status: STATUS.ORDER.OPEN,
+    },
+};
+const store = memoryStore(Object.assign({}, orderFixtures));
 
 
 const bus = {
     emit: noop,
 };
-const OrderService = makeOrderService(bus);
+const OrderService = makeOrderService(bus, store);
 const action = {
     type: ACTIONS.ORDER.CONFIRM_ORDER,
     target: 1,

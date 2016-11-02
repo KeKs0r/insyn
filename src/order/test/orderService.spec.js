@@ -3,6 +3,10 @@ const expect = require('unexpected');
 
 const { ACTIONS } = require('../../constants');
 const createOrderService = require('../index');
+const { memoryStore } = require('../../../lib/src');
+
+const customerStore = memoryStore(require('./fixtures/customer.json'));
+const productStore = memoryStore(require('./fixtures/products.json'));
 
 const action = {
     type: ACTIONS.ORDER.CREATE_ORDER,
@@ -16,7 +20,7 @@ const bus = {
     emit: () => {
     },
 };
-const orderService = createOrderService(bus);
+const orderService = createOrderService(bus, memoryStore(), customerStore, productStore);
 
 test('handles createOrder', () => {
     const result = orderService.handle(action);
