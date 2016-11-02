@@ -33,5 +33,4 @@ test('Functional: Pay Invoice Completely', () => {
             }),
         }),
     });
-
 });
