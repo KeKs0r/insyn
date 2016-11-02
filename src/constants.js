@@ -6,15 +6,19 @@ const constants = {
         },
         INVOICE: {
             CREATE_INVOICE: 'INVOICE.CREATE_INVOICE',
+            PAY_INVOICE: 'INVOICE.PAY_INVOICE',
         },
     },
     STATUS: {
         ORDER: {
-            OPEN: 'STATUS_ORDER_OPEN',
-            CONFIRMED: 'STATUS_ORDER_CONFIRMED',
+            OPEN: 'ORDER.OPEN',
+            CONFIRMED: 'ORDER.CONFIRMED',
         },
         INVOICE: {
-            OPEN: 'STATUS_INVOICE_OPEN',
+            OPEN: 'INVOICE.OPEN',
+            PARTIALLY_PAID: 'INVOICE.PARTIALLY_PAID',
+            FULLY_PAID: 'INVOICE.FULLY_PAID',
+            OVER_PAID: 'INVOICE.OVER_PAID',
         },
     },
 };

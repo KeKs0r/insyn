@@ -26,7 +26,6 @@ test('prices - basic pricing has VAT', () => {
         },
     };
     const { itemPrices, total } = priceHandler(action);
-
     const expectTotal = round(((2 * price1) + price2) * 1.19);
     expect(total, 'to equal', expectTotal);
 
