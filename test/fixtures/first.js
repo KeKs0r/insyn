@@ -13,6 +13,11 @@ const process = {
         type: ACTIONS.ORDER.CONFIRM_ORDER,
         target,
     }),
+    [ACTIONS.INVOICE.PAY_INVOICE]: target => ({
+        type: ACTIONS.INVOICE.PAY_INVOICE,
+        amount: 252.15,
+        target,
+    }),
 };
 
 module.exports = process;

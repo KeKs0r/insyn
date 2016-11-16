@@ -4,7 +4,7 @@ const _ = require('lodash');
 
 
 const actionSchema = Joi.object().keys({
-    target: Joi.number().required(),
+    target: Joi.required(),
     amount: Joi.number().min(0.01).required(),
 }).unknown();
 

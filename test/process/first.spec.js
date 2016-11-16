@@ -55,3 +55,17 @@ test.serial('2. confirm Order', () => {
         status: STATUS.ORDER.CONFIRMED,
     });
 });
+
+
+test.serial('3. Pay Invoice fully', () => {
+    const invoiceId = _.get(_.head(_.values(invoiceStore.getAll())), 'id');
+    const actionGenerator = process[ACTIONS.INVOICE.PAY_INVOICE];
+    const action = actionGenerator(invoiceId);
+    app.handle(action);
+
+    expect(_.size(invoiceStore.getAll()), 'to be', 1);
+    const invoice = _.head(_.values(invoiceStore.getAll()));
+    expect(invoice, 'to satisfy', {
+        status: STATUS.INVOICE.FULLY_PAID,
+    });
+});
