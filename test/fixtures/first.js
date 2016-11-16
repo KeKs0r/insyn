@@ -9,6 +9,10 @@ const process = {
             { id: 3, quantity: 1 },
         ],
     },
+    [ACTIONS.ORDER.CONFIRM_ORDER]: target => ({
+        type: ACTIONS.ORDER.CONFIRM_ORDER,
+        target,
+    }),
 };
 
 module.exports = process;
