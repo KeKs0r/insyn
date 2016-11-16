@@ -4,12 +4,8 @@ const {
     enhancer: { addSideDispatch, applyMiddleware },
     middleware: { uuid, makeTargetMiddleware, sidedispatch },
     compose,
-    memoryStore,
+    MemoryStore,
 } = require('../../lib/src');
-
-// Middleware
-const makeMemoryFetcher = memoryStore;
-
 
 // Handler
 const { ACTIONS } = require('../constants');
@@ -18,7 +14,7 @@ const payInvoiceHandler = require('./handler/payInvoice');
 
 
 const createInvoiceService = (bus, store) => {
-    const targetMiddleware = makeTargetMiddleware(store || makeMemoryFetcher());
+    const targetMiddleware = makeTargetMiddleware(store || new MemoryStore());
     const InvoiceService = createService(
         compose(
             applyMiddleware(uuid, targetMiddleware, sidedispatch),

@@ -6,25 +6,26 @@ const {
     compose,
 } = require('../../lib/src');
 
-// Fixtures
-const customerData = require('./test/fixtures/customer.json');
-const productData = require('./test/fixtures/products.json');
 
 // Middleware
-const makeMemoryStore = require('../../lib/src/util/memoryStore');
+const MemoryStore = require('../../lib/src/util/memoryStore');
 const makeFetchCustomerMiddleware = require('./middleware/fetchCustomer');
 const makeFetchItemsMiddleware = require('./middleware/fetchItems');
-
-const customerFetcherMiddleware = makeFetchCustomerMiddleware(makeMemoryStore(customerData));
-const itemsFetcherMiddleware = makeFetchItemsMiddleware(makeMemoryStore(productData));
-const targetMiddleware = makeTargetMiddleware(makeMemoryStore());
 
 // Handler
 const { ACTIONS } = require('../constants');
 const createOrderHandler = require('./handler/createOrder');
 const confirmOrderHandler = require('./handler/confirmOrder');
 
-const createOrderService = bus => {
+const createOrderService = (bus, oStore, cStore, pStore) => {
+    const store = oStore || new MemoryStore();
+    const customerStore = cStore || new MemoryStore();
+    const productStore = pStore || new MemoryStore();
+
+    const customerFetcherMiddleware = makeFetchCustomerMiddleware(customerStore);
+    const itemsFetcherMiddleware = makeFetchItemsMiddleware(productStore);
+    const targetMiddleware = makeTargetMiddleware(store);
+
     const OrderService = createService(
         compose(
             applyMiddleware(uuid, targetMiddleware, sidedispatch, customerFetcherMiddleware, itemsFetcherMiddleware),
