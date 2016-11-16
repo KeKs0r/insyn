@@ -7,6 +7,7 @@ const { MemoryStore } = require('../../../lib/src');
 
 const customerFixtures = require('./fixtures/customer.json');
 const productFixtures = require('./fixtures/products.json');
+
 const customerStore = new MemoryStore(customerFixtures);
 const productStore = new MemoryStore(productFixtures);
 

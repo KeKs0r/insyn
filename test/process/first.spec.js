@@ -29,7 +29,6 @@ const process = require('../fixtures/first');
 test.serial('1. createOrder: Order + Invoice', () => {
     app.handle(process[ACTIONS.ORDER.CREATE_ORDER]);
 
-
     expect(_.size(orderStore.getAll()), 'to be', 1);
     const order = _.head(_.map(orderStore.getAll(), c => c));
     expect(order, 'to satisfy', {
@@ -42,5 +41,4 @@ test.serial('1. createOrder: Order + Invoice', () => {
     expect(invoice, 'to satisfy', {
         status: STATUS.INVOICE.OPEN,
     });
-
 });
