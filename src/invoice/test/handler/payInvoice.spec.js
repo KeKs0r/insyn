@@ -3,7 +3,7 @@ const expect = require('unexpected');
 
 const { ACTIONS, STATUS } = require('../../../constants');
 const createInvoiceService = require('../../index');
-const { memoryStore } = require('../../../../lib/src');
+const { MemoryStore } = require('../../../../lib/src');
 const { noop } = require('lodash');
 
 const invoiceData = require('../fixtures/invoices');
@@ -14,7 +14,7 @@ const action = {
     amount: invoiceData[1].prices.total,
 };
 
-const store = memoryStore(Object.assign({}, invoiceData));
+const store = new MemoryStore(Object.assign({}, invoiceData));
 
 const bus = {
     emit: noop,

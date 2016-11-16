@@ -4,7 +4,7 @@ const expect = require('unexpected');
 const { ACTIONS, STATUS } = require('../../../constants');
 const makeOrderService = require('../../index');
 const { noop } = require('lodash');
-const { memoryStore } = require('../../../../lib/src');
+const { MemoryStore } = require('../../../../lib/src');
 
 const orderFixtures = {
     1: {
@@ -12,7 +12,7 @@ const orderFixtures = {
         status: STATUS.ORDER.OPEN,
     },
 };
-const store = memoryStore(Object.assign({}, orderFixtures));
+const store = new MemoryStore(Object.assign({}, orderFixtures));
 
 
 const bus = {
