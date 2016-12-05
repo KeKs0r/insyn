@@ -3,26 +3,10 @@ const expect = require('unexpected');
 const _ = require('lodash');
 
 
-const { EventEmitter2 } = require('eventemitter2');
+const TestApp = require('../util/TestApp');
+const { app, orderStore, invoiceStore } = TestApp;
 const { ACTIONS, STATUS } = require('../../src/constants');
-const createOrderService = require('../../src/order');
-const createInvoiceService = require('../../src/invoice');
-const { MemoryStore, createApp } = require('../../lib/src');
 
-const customerFixtures = require('../fixtures/customer.json');
-const productFixtures = require('../fixtures/products.json');
-
-const invoiceStore = new MemoryStore({}, 'invoice');
-const orderStore = new MemoryStore({}, 'order');
-const customerStore = new MemoryStore(customerFixtures, 'customer');
-const productStore = new MemoryStore(productFixtures, 'product');
-
-const bus = new EventEmitter2({ wildcard: true });
-
-const orderService = createOrderService(bus, orderStore, customerStore, productStore);
-const invoiceService = createInvoiceService(bus, invoiceStore);
-
-const app = createApp(bus, orderService, invoiceService);
 
 const process = require('../fixtures/first');
 

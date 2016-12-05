@@ -1,4 +1,4 @@
-{
+module.exports = {
   "1": {
     "id": 1,
     "name": "Example Customer #1"
