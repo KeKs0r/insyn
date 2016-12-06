@@ -15,7 +15,7 @@ const process = {
     }),
     [ACTIONS.INVOICE.PAY_INVOICE]: target => ({
         type: ACTIONS.INVOICE.PAY_INVOICE,
-        amount: 252.15,
+        amount: 226.93,
         target,
     }),
 };

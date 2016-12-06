@@ -1,6 +1,7 @@
 module.exports = {
-  "1": {
-    "id": 1,
-    "name": "Example Customer #1"
-  }
+    "15": {
+        "id": 15,
+        "name": "Example Customer #1",
+        "classification": "A"
+    }
 }

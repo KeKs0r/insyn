@@ -2,8 +2,16 @@ const _ = require('lodash');
 
 const round = price => Math.round(price * 100) / 100;
 
+const discounts = {
+    "A": 0.10,
+    "B": 0.03,
+    "C": 0,
+}
+
+
 const calculatePrices = action => {
-    const { itemsData, items } = action;
+    const { itemsData, items, customerData } = action;
+    discounts['A'] = global.globalDiscount || discounts['A'];
     const itemPrices = _.mapValues(items, item => {
         const itemData = itemsData[item.id];
         const itemPrice = [];
@@ -15,11 +23,24 @@ const calculatePrices = action => {
             aggregate: round(itemData.price * item.quantity),
         };
         itemPrice.push(base);
+
+        if (customerData && _.isNumber(discounts[customerData.classification])) {
+            const currentDiscount = discounts[customerData.classification];
+            const discountAmount = base.total * currentDiscount;
+            const discount = {
+                type: 'Discount',
+                unit: discounts[customerData.classification],
+                total: round(discountAmount),
+                aggregate: round(base.total - discountAmount),
+            };
+            itemPrice.push(discount);
+        }
+
         const vat = {
             type: 'VAT',
             unit: '19%',
-            total: round(0.19 * base.total),
-            aggregate: round(base.total * 1.19),
+            total: round(0.19 * _.last(itemPrice).total),
+            aggregate: round(_.last(itemPrice).aggregate * 1.19),
         };
         itemPrice.push(vat);
         return itemPrice;
