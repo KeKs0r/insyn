@@ -24,9 +24,9 @@ export function clearEvents() {
 // Action Handlers
 // ------------------------------------
 const ACTION_HANDLERS = {
-    [ADD_EVENT]: (state, action) => state.update('events', e => e.push(Immutable.from(action.event))),
-    [CLEAR_EVENTS]: (state, action) => state.set('events', new Immutable.List())
-}
+    [ADD_EVENT]: (state, action) => state.update('events', e => e.push(Immutable.fromJS(action.event))),
+    [CLEAR_EVENTS]: (state) => state.set('events', new Immutable.List()),
+};
 
 // ------------------------------------
 // Reducer

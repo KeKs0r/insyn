@@ -1,20 +1,15 @@
-import React from 'react'
+import React from "react";
+import Diagram from "components/Diagram";
 
-export const Counter = (props) => (
-  <div style={{ margin: '0 auto' }} >
-    <h2>Counter: {props.counter}</h2>
-    <button className='btn btn-default' onClick={props.increment}>
-      Increment
-    </button>
-    {' '}
-    <button className='btn btn-default' onClick={props.doubleAsync}>
-      Double (Async)
-    </button>
-  </div>
-)
+export const ProcessView = ({events}) => (
+    <div style={{ margin: '0 auto' }}>
+        <Diagram events={events}/>
+    </div>
+);
 
-Counter.propTypes = {
-  process : React.PropTypes.object.isRequired,
+ProcessView.propTypes = {
+    events: React.PropTypes.object.isRequired,
+    // startProcess: React.PropTypes.func.isRequired,
 }
 
-export default Counter
+export default ProcessView;

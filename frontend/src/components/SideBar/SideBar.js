@@ -7,8 +7,9 @@ import Anchor from "grommet/components/Anchor";
 import Immutable from "immutable";
 
 export default function SideBar({ processes }) {
-    processes = processes || Immutable.fromJS(['Navigation 1', 'Navigation 2', 'Navigation 3']);
-    const menu = processes.map(p => <Anchor href={`process/${p}`} key={p}>{p}</Anchor>);
+    processes = processes || Immutable.fromJS([{ label: 'Order Process', path: 'order' }]);
+    const menu = processes.map(p => <Anchor href={`process/${p.get('path')}`}
+                                            key={p.get('path')}>{p.get('label')}</Anchor>);
     return (
         <Sidebar colorIndex="neutral-1" size="small">
             <Header pad="medium" justify="between">

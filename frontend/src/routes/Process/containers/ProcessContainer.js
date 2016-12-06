@@ -10,9 +10,11 @@ const mapDispatchToProps = {
     startProcess,
 };
 
-const mapStateToProps = (state) => ({
-    events: state.process.get('events'),
-});
+const mapStateToProps = (state) => {
+    return {
+        events: state.process.get('events'),
+    };
+};
 
 /*  Note: mapStateToProps is where you should use `reselect` to create selectors, ie:
 

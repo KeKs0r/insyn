@@ -129,8 +129,13 @@ webpackConfig.module.loaders = [{
     loader: 'babel-loader',
     query: config.compiler_babel
 }, {
+    test: /\.(js|jsx)$/,
+    include: /react-flowchart/,
+    loader: 'babel-loader',
+    query: config.compiler_babel
+},{
     test: /\.json$/,
-    loader: 'json'
+    loader: 'json-loader',
 }]
 
 // ------------------------------------
