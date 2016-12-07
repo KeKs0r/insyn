@@ -5,6 +5,10 @@ import Title from "grommet/components/Title";
 import Menu from "grommet/components/Menu";
 import Anchor from "grommet/components/Anchor";
 import Immutable from "immutable";
+import _CustomerForm from "components/Customer/CustomerForm";
+import CustomerContainer from "containers/CustomerClassificationContainer";
+
+const CustomerForm = CustomerContainer(_CustomerForm);
 
 export default function SideBar({ processes }) {
     processes = processes || Immutable.fromJS([{ label: 'Order Process', path: 'order' }]);
@@ -20,6 +24,7 @@ export default function SideBar({ processes }) {
             <Menu primary={true}>
                 {menu}
             </Menu>
+            <CustomerForm/>
         </Sidebar>
     );
 }
