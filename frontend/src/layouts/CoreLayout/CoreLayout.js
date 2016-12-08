@@ -17,7 +17,7 @@ export class CoreLayout extends Component {
     render() {
         const { showNav, children } = this.props;
         return (
-            <App>
+            <App centered={false}>
                 <Header />
                 <Split separator={true} flex="right">
                     <SideBar />

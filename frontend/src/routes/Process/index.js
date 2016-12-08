@@ -1,7 +1,11 @@
-import _ProcessView from './components/ProcessView';
-import ProcessContainer from './containers/ProcessContainer';
+import _ProcessView from "./components/ProcessView";
+import ProcessContainer from "./containers/ProcessContainer";
+import _EventView from "./components/EventView";
+import EventContainer from "./containers/EventContainer";
 
 const ProcessView = ProcessContainer(_ProcessView);
+const EventView = EventContainer(_EventView);
+
 
 export default (store) => ({
     path: 'process/:type',
@@ -23,5 +27,11 @@ export default (store) => ({
     //
     //         /* Webpack named bundle   */
     //     }, 'process')
-    // }
+    // },
+    childRoutes: [
+        {
+            path: 'event/:uuid',
+            component: EventView
+        }
+    ]
 });

@@ -9,7 +9,8 @@ const makeFetchItems = store => service => next => payload => {
         const itemsData = mapValues(keyed, item => store.get(item.id));
         const decoratedAction = Object.assign({}, action, { itemsData });
         const nextPayload = Object.assign({}, payload, { action: decoratedAction });
-        return next(nextPayload);
+        const result = next(nextPayload);
+        return Object.assign({}, result, { itemsData });
     }
     return next(payload);
 };

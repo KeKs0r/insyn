@@ -6,7 +6,8 @@ const makeFetchCustomer = store => service => next => payload => {
         const customerData = store.get(customer);
         const decoratedAction = Object.assign({}, action, { customerData });
         const nextPayload = Object.assign({}, payload, { action: decoratedAction });
-        return next(nextPayload);
+        const result = next(nextPayload);
+        return Object.assign({}, result, { customerData });
     }
     return next(payload);
 };

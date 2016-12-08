@@ -15,6 +15,7 @@ const { ACTIONS, STATUS } = require('../../../src/constants');
 export const SET_CUSTOMER_CLASS = 'SET_CUSTOMER_CLASS';
 
 const { addEvent, clearEvents } = require('./process');
+const { browserHistory } = require('react-router');
 
 export const playProcess = () => {
     let order;
@@ -26,7 +27,7 @@ export const playProcess = () => {
         const customer = customerStore.get('15');
         customer.classification = customerClass;
         customerStore.set('15', customer);
-
+        browserHistory.replace('/process/order');
         dispatch(clearEvents());
         const handler = (result) => {
             if (result.result.status === STATUS.INVOICE.OPEN) {
