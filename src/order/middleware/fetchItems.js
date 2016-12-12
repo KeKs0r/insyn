@@ -2,8 +2,8 @@ const { keyBy, mapValues } = require('lodash');
 
 // eslint-disable-next-line no-unused-vars
 const makeFetchItems = store => service => next => payload => {
-    const { action } = payload;
-    const { items } = action;
+    const { action, target } = payload;
+    const items = action.items || target.items;
     if (items) {
         const keyed = keyBy(items, 'id');
         const itemsData = mapValues(keyed, item => store.get(item.id));

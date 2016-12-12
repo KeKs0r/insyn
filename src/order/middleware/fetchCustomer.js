@@ -1,9 +1,10 @@
 // eslint-disable-next-line no-unused-vars
 const makeFetchCustomer = store => service => next => payload => {
-    const { action } = payload;
+    const { action, target } = payload;
     const { customer } = action;
-    if (customer) {
-        const customerData = store.get(customer);
+    const customerId = customer || target.customer;
+    if (customerId) {
+        const customerData = store.get(customerId);
         const decoratedAction = Object.assign({}, action, { customerData });
         const nextPayload = Object.assign({}, payload, { action: decoratedAction });
         const result = next(nextPayload);

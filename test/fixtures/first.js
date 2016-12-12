@@ -6,9 +6,14 @@ const process = {
         customer: 15,
         items: [
             { id: 1, quantity: 2 },
-            { id: 3, quantity: 1 },
+            { id: 3, quantity: 2 },
         ],
     },
+    [ACTIONS.ORDER.CHANGE_QUANTITY]: target => ({
+        type: ACTIONS.ORDER.CHANGE_QUANTITY,
+        target,
+        item: { id: 3, quantity: 1 }
+    }),
     [ACTIONS.ORDER.CONFIRM_ORDER]: target => ({
         type: ACTIONS.ORDER.CONFIRM_ORDER,
         target,
