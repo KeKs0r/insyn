@@ -15,7 +15,7 @@ export const ProcessView = ({ events, children }) => {
     ) : null;
     return (
         <Split flex separator={Boolean(children)} fixed={false}>
-            <Box style={{width: 750}}>
+            <Box style={{width: 650}}>
                 <Diagram events={events}/>
             </Box>
             {right}
