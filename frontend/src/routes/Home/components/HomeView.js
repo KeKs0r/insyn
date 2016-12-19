@@ -7,9 +7,9 @@ import Card from 'grommet/components/Card'
 export const HomeView = () => (
     <Box pad="medium" direction="row" size="xxlarge">
         <Card label="#transparency" thumbnail={BackgroundImage}
-              heading="The Key Steps to Reducing Software Spend" description="HPE Software Licensing and Management Solutions can
-              help you optimize your software investments through control of
-              complex negotiations and renewal processes" />
+              heading="The Key Steps to Reducing Software Spend" description="Insyn can
+              help you optimize your software investments through transparency over
+              complex business processes" />
     </Box>
 );
 
