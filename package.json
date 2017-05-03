@@ -8,19 +8,32 @@
   },
   "scripts": {
     "lint": "eslint lib src test",
-    "test": "ava \"**/*.spec.js*\" --verbose",
+    "test": "cross-env NODE_ENV=test ava",
     "test:watch": "npm run test -- --watch",
     "ava:help": "ava -h"
+  },
+  "ava": {
+    "files": [
+      "**/*.spec.js*"
+    ],
+    "failFast": true,
+    "tap": true,
+    "verbose": true,
+    "require": [
+      "babel-register"
+    ],
+    "babel": "inherit"
   },
   "author": "Marc Höffl",
   "license": "ISC",
   "devDependencies": {
     "ava": "avajs/ava#master",
-    "eslint": "3.10.2",
     "babel-loader": "^6.2.5",
     "babel-preset-es2015": "^6.14.0",
     "babel-preset-react": "^6.11.1",
     "babel-preset-stage-0": "^6.3.13",
+    "cross-env": "^4.0.0",
+    "eslint": "3.10.2",
     "eslint-config-airbnb": "13.0.0",
     "eslint-plugin-import": "2.2.0",
     "eslint-plugin-jsx-a11y": "2.2.2",
