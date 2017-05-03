@@ -12,7 +12,7 @@ const CustomerForm = CustomerContainer(_CustomerForm);
 
 export default function SideBar({ processes }) {
     processes = processes || Immutable.fromJS([{ label: 'Order Process', path: 'order' }]);
-    const menu = processes.map(p => <Anchor href={`/process/${p.get('path')}`}
+    const menu = processes.map(p => <Anchor href={`/#/process/${p.get('path')}`}
                                             key={p.get('path')}>{p.get('label')}</Anchor>);
     return (
         <Sidebar colorIndex="neutral-1" size="small">

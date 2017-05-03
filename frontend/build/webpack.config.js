@@ -99,7 +99,8 @@ if (__DEV__) {
     debug('Enable plugins for production (OccurenceOrder, Dedupe & UglifyJS).')
     webpackConfig.plugins.push(
         new webpack.optimize.OccurrenceOrderPlugin(),
-        new webpack.optimize.DedupePlugin(),
+        new webpack.optimize.DedupePlugin()        /*,
+
         new webpack.optimize.UglifyJsPlugin({
             compress: {
                 unused: true,
@@ -107,6 +108,7 @@ if (__DEV__) {
                 warnings: false
             }
         })
+        */
     )
 }
 
