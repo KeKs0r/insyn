@@ -17,7 +17,9 @@ export function addEvent(event) {
 
 export function clearEvents() {
     return {
-        type: CLEAR_EVENTS,
+        type: CLEAR_EVENTS
+
+,
     };
 }
 // ------------------------------------
