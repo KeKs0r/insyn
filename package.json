@@ -17,7 +17,8 @@
       "**/*.spec.js*"
     ],
     "failFast": true,
-    "tap": true,
+    "tap": false,
+    "failWithoutAssertions": false,
     "verbose": true,
     "require": [
       "babel-register"
