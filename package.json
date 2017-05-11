@@ -37,11 +37,11 @@
     "cross-env": "^4.0.0",
     "eslint-config-airbnb": "14.1.0",
     "eslint-plugin-import": "2.2.0",
-    "eslint-plugin-jsx-a11y": "4.0.0",
     "eslint-plugin-react": "7.0.0",
+    "eslint-plugin-jsx-a11y": "5.0.0",
     "pre-commit": "1.2.2",
     "sinon": "2.2.0",
-    "unexpected": "10.27.0",
+    "unexpected": "10.28.0",
     "unexpected-sinon": "10.7.1"
   },
   "dependencies": {
