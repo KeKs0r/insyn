@@ -1,5 +1,7 @@
 # Insyn - Transparent Business Process Execution
 
+[![Greenkeeper badge](https://badges.greenkeeper.io/KeKs0r/insyn.svg)](https://greenkeeper.io/)
+
 This is a prototype for a a programming model to execute distributed processes in an enterprise environment.
 
 
