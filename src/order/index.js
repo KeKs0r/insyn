@@ -16,6 +16,7 @@ const makeFetchItemsMiddleware = require('./middleware/fetchItems');
 const { ACTIONS } = require('../constants');
 const createOrderHandler = require('./handler/createOrder');
 const confirmOrderHandler = require('./handler/confirmOrder');
+const changeQuantityHandler = require('./handler/changeQuantity');
 
 const createOrderService = (bus, oStore, cStore, pStore) => {
     const store = oStore || new MemoryStore();
@@ -34,6 +35,7 @@ const createOrderService = (bus, oStore, cStore, pStore) => {
     );
     OrderService.register(ACTIONS.ORDER.CREATE_ORDER, createOrderHandler);
     OrderService.register(ACTIONS.ORDER.CONFIRM_ORDER, confirmOrderHandler);
+    OrderService.register(ACTIONS.ORDER.CHANGE_QUANTITY, changeQuantityHandler);
 
     return OrderService;
 };

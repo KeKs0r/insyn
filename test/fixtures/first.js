@@ -9,6 +9,11 @@ const process = {
             { id: 3, quantity: 1 },
         ],
     },
+    [ACTIONS.ORDER.CHANGE_QUANTITY]: target => ({
+        type: ACTIONS.ORDER.CHANGE_QUANTITY,
+        target,
+        item: { id: 3, quantity: 1 }
+    }),
     [ACTIONS.ORDER.CONFIRM_ORDER]: target => ({
         type: ACTIONS.ORDER.CONFIRM_ORDER,
         target,

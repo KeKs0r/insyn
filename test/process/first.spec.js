@@ -17,6 +17,9 @@ test.serial.cb('1. createOrder: Order + Invoice are created', (t) => {
     const order = _.head(_.values(orderStore.getAll()));
     expect(order, 'to satisfy', {
         status: STATUS.ORDER.OPEN,
+        prices: {
+            total: 239.67,
+        },
     });
 
     setTimeout(() => {
@@ -24,9 +27,40 @@ test.serial.cb('1. createOrder: Order + Invoice are created', (t) => {
         const invoice = _.head(_.values(invoiceStore.getAll()));
         expect(invoice, 'to satisfy', {
             status: STATUS.INVOICE.OPEN,
+            items: expect.it('to have items satisfying', {
+                quantity: 2,
+            }),
         });
         t.end();
     }, 10);
+
+});
+
+test.serial.cb('2. createOrder: Change Quantity', (t) => {
+    const orderId = _.get(_.head(_.values(orderStore.getAll())), 'id');
+    const actionGenerator = process[ACTIONS.ORDER.CHANGE_QUANTITY];
+    app.handle(actionGenerator(orderId));
+
+    expect(_.size(orderStore.getAll()), 'to be', 1);
+    const order = _.head(_.values(orderStore.getAll()));
+    expect(order, 'to satisfy', {
+        items: expect.it('to contain', {
+            id: 3, quantity: 1,
+        }),
+        prices: {
+            total:226.93
+        }
+    });
+
+    t.end();
+    // setTimeout(() => {
+    //     expect(_.size(invoiceStore.getAll()), 'to be', 1);
+    //     const invoice = _.head(_.values(invoiceStore.getAll()));
+    //     expect(invoice, 'to satisfy', {
+    //         status: STATUS.INVOICE.OPEN,
+    //     });
+    //     t.end();
+    // }, 10);
 
 });
 
