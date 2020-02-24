@@ -45,7 +45,7 @@
     "joi": "9.2.0",
     "lodash": "4.16.6",
     "transform-runtime": "0.0.0",
-    "uuid": "^2.0.3"
+    "uuid": "^7.0.0"
   },
   "ava": {
     "failWithoutAssertions": false
